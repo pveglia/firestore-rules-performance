@@ -19,21 +19,23 @@
 
 <body>
   <h1>Firebase Security rules performance</h1>
-  
-  <code>/conversation/a-conversation</code>.
+
+
   <ul>
-    <li>Firestore DB contains one document at</li>
-    <li>On start application will fetch that document and load the counter value in memory.</li>
-    <li>At each click, a http triggered function is called with the next counter value that will update the document in the db
+    <li>Firestore DB contains one document at <code>/conversation/a-conversation</code>.</li>
+    <li>On start, application will fetch that document and load the counter value in memory.</li>
+    <li>At each click, a http triggered function is called with the next counter value.</li>
+    <li>Function will update the document in the db
       with the provided value.</li>
-    <li>Upon reception of document snapshots, the counter value is appended to the page.</li>
+    <li>Upon reception of document snapshot, the counter value is appended to the page.</li>
     <li>After some increases, updates start to arrive ~30 seconds later, while in the DB the value is update much sooner</li>
+    <li>When rules are disabled, updates arrive within a couple of seconds</li>
   </ul>
 
 
 
   <div class="container">
-    <button id="button" disabled>Increase counter</button>
+    <button id="button" disabled="true" autocomplete="off">Increase counter</button>
     <div class="messages">
       <ul class="list">
 
