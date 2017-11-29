@@ -1,0 +1,11 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /conversations/{conversationID} {
+      allow read, write: if resource.data.token == '123456';
+    }
+  }
+}

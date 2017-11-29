@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Firebase Security rules performance</title>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/4.6.2/firebase-app.js"></script>
+  <script defer src="/__/firebase/4.6.2/firebase-firestore.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <!-- <script defer src="/__/firebase/4.6.2/firebase-auth.js"></script> -->
+  <!-- <script defer src="/__/firebase/4.6.2/firebase-database.js"></script> -->
+  <!-- initialize the SDK after all desired features are loaded -->
+  <script defer src="/__/firebase/init.js"></script>
+
+</head>
+
+<body>
+  <h1>Firebase Security rules performance</h1>
+  
+  <code>/conversation/a-conversation</code>.
+  <ul>
+    <li>Firestore DB contains one document at</li>
+    <li>On start application will fetch that document and load the counter value in memory.</li>
+    <li>At each click, a http triggered function is called with the next counter value that will update the document in the db
+      with the provided value.</li>
+    <li>Upon reception of document snapshots, the counter value is appended to the page.</li>
+    <li>After some increases, updates start to arrive ~30 seconds later, while in the DB the value is update much sooner</li>
+  </ul>
+
+
+
+  <div class="container">
+    <button id="button" disabled>Increase counter</button>
+    <div class="messages">
+      <ul class="list">
+
+      </ul>
+    </div>
+  </div>
+  <script src="/app.js">
+  </script>
+</body>
+
+</html>
